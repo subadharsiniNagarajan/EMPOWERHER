@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Skills Translation Test</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #ffeef8 0%, #e0c3fc 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #e0c3fc;
+        }
+        
+        h1 {
+            color: #d946ef;
+            font-size: 28px;
+        }
+        
+        .language-selector {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: 2px solid #d946ef;
+            border-radius: 10px;
+            background: white;
+            color: #d946ef;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        
+        .section-title {
+            color: #d946ef;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .skills-grid {
+            display: grid;
+            gap: 20px;
+        }
+        
+        .skill-category {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 15px;
+            border-left: 5px solid #d946ef;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .skill-category:hover {
+            background: #f3e8ff;
+            transform: translateX(5px);
+        }
+        
+        .category-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .category-icon {
+            font-size: 36px;
+        }
+        
+        .category-info {
+            flex: 1;
+        }
+        
+        .category-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #d946ef;
+            margin-bottom: 5px;
+        }
+        
+        .category-description {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .category-expand {
+            font-size: 20px;
+            color: #d946ef;
+            transition: transform 0.3s;
+        }
+        
+        .skill-category.expanded .category-expand {
+            transform: rotate(180deg);
+        }
+        
+        .subcategories {
+            display: none;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 2px solid #e0c3fc;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 10px;
+        }
+        
+        .skill-category.expanded .subcategories {
+            display: grid;
+        }
+        
+        .subcategory-item {
+            background: white;
+            padding: 12px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+        }
+        
+        .subcategory-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(217, 70, 239, 0.2);
+        }
+        
+        .subcategory-icon {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+        
+        .subcategory-name {
+            font-weight: bold;
+            color: #555;
+            font-size: 13px;
+        }
+        
+        .test-info {
+            background: #e0f2fe;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border-left: 5px solid #0284c7;
+        }
+        
+        .test-info h3 {
+            color: #0284c7;
+            margin-bottom: 10px;
+        }
+        
+        .test-info ul {
+            margin-left: 20px;
+            line-height: 1.8;
+        }
+        
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .subcategories {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="test-info">
+            <h3>🧪 Business Skills Translation Test</h3>
+            <ul>
+                <li><strong>Test 1:</strong> Change language from dropdown - all text should update instantly</li>
+                <li><strong>Test 2:</strong> Click categories to expand - subcategories should be in selected language</li>
+                <li><strong>Test 3:</strong> Refresh page - language selection should persist</li>
+                <li><strong>Test 4:</strong> Try all 3 languages: English, Tamil (தமிழ்), Hindi (हिंदी)</li>
+            </ul>
+        </div>
+        
+        <div class="header">
+            <h1 id="pageTitle">EmpowerHer - Business Skills Test</h1>
+            <select id="languageSelector" class="language-selector" onchange="changeLanguage()">
+                <option value="english">English</option>
+                <option value="tamil">தமிழ் (Tamil)</option>
+                <option value="hindi">हिंदी (Hindi)</option>
+            </select>
+        </div>
+
+        <h2 class="section-title" id="sectionTitle">🎯 Explore Business Skills</h2>
+
+        <div class="skills-grid" id="skillsGrid">
+            <!-- Skills will be dynamically loaded here -->
+        </div>
+    </div>
+
+    <script>
+        // Translation data
+        const translations = {
+            english: {
+                pageTitle: "EmpowerHer - Business Skills Test",
+                sectionTitle: "🎯 Explore Business Skills",
+                categories: {
+                    cooking: {
+                        title: "Cooking & Catering",
+                        description: "Home-cooked meals and catering services",
+                        subcategories: ["Tiffin Service", "Catering", "Homemade Pickles", "Masala Business", "Snacks Making"]
+                    },
+                    baking: {
+                        title: "Baking & Desserts",
+                        description: "Custom cakes and baked goods",
+                        subcategories: ["Cupcakes", "Custom Cakes", "Cookies", "Pastries", "Donuts"]
+                    },
+                    tailoring: {
+                        title: "Tailoring & Boutique",
+                        description: "Stitching and alteration services",
+                        subcategories: ["Dress Stitching", "Blouse Making", "Alterations", "Kids Wear", "Custom Boutique"]
+                    },
+                    beauty: {
+                        title: "Beauty & Makeup",
+                        description: "Beauty services and makeup artistry",
+                        subcategories: ["Mehendi Artist", "Makeup Artist", "Facial Services", "Hair Styling", "Bridal Makeup"]
+                    }
+                }
+            },
+            tamil: {
+                pageTitle: "எம்பவர்ஹெர் - வியாபார திறன்கள் சோதனை",
+                sectionTitle: "🎯 வியாபார திறன்களை ஆராயுங்கள்",
+                categories: {
+                    cooking: {
+                        title: "சமையல் மற்றும் கேட்டரிங்",
+                        description: "வீட்டில் சமைத்த உணவு மற்றும் கேட்டரிங் சேவைகள்",
+                        subcategories: ["டிஃபின் சேவை", "கேட்டரிங்", "வீட்டில் தயாரிக்கப்பட்ட ஊறுகாய்", "மசாலா வியாபாரம்", "சிற்றுண்டி தயாரிப்பு"]
+                    },
+                    baking: {
+                        title: "பேக்கிங் மற்றும் இனிப்புகள்",
+                        description: "தனிப்பயன் கேக்குகள் மற்றும் சுடப்பட்ட பொருட்கள்",
+                        subcategories: ["கப்கேக்குகள்", "தனிப்பயன் கேக்குகள்", "குக்கீகள்", "பேஸ்ட்ரிகள்", "டோனட்ஸ்"]
+                    },
+                    tailoring: {
+                        title: "தையல் மற்றும் பூட்டிக்",
+                        description: "தையல் மற்றும் மாற்றம் சேவைகள்",
+                        subcategories: ["ஆடை தையல்", "ரவிக்கை தயாரிப்பு", "மாற்றங்கள்", "குழந்தைகள் உடைகள்", "தனிப்பயன் பூட்டிக்"]
+                    },
+                    beauty: {
+                        title: "அழகு மற்றும் மேக்கப்",
+                        description: "மேக்கப் மற்றும் அழகு சேவைகள்",
+                        subcategories: ["மெஹந்தி கலைஞர்", "மேக்கப் கலைஞர்", "முக சிகிச்சை சேவைகள்", "முடி அலங்காரம்", "மணமகள் மேக்கப்"]
+                    }
+                }
+            },
+            hindi: {
+                pageTitle: "एम्पावरहर - व्यवसाय कौशल परीक्षण",
+                sectionTitle: "🎯 व्यवसाय कौशल खोजें",
+                categories: {
+                    cooking: {
+                        title: "खाना पकाना और कैटरिंग",
+                        description: "घर का बना खाना और कैटरिंग सेवाएं",
+                        subcategories: ["टिफिन सेवा", "कैटरिंग", "घर का बना अचार", "मसाला व्यवसाय", "नाश्ता बनाना"]
+                    },
+                    baking: {
+                        title: "बेकिंग और मिठाई",
+                        description: "कस्टम केक और बेक किए गए सामान",
+                        subcategories: ["कपकेक", "कस्टम केक", "कुकीज़", "पेस्ट्री", "डोनट्स"]
+                    },
+                    tailoring: {
+                        title: "सिलाई और बुटीक",
+                        description: "सिलाई और परिवर्तन सेवाएं",
+                        subcategories: ["कपड़े की सिलाई", "ब्लाउज बनाना", "परिवर्तन", "बच्चों के कपड़े", "कस्टम बुटीक"]
+                    },
+                    beauty: {
+                        title: "सौंदर्य और मेकअप",
+                        description: "मेकअप और सौंदर्य सेवाएं",
+                        subcategories: ["मेहंदी कलाकार", "मेकअप कलाकार", "फेशियल सेवाएं", "हेयर स्टाइलिंग", "दुल्हन मेकअप"]
+                    }
+                }
+            }
+        };
+
+        // Category icons
+        const categoryIcons = {
+            cooking: "🍳",
+            baking: "🎂",
+            tailoring: "✂️",
+            beauty: "💄"
+        };
+
+        // Subcategory icons
+        const subcategoryIcons = {
+            cooking: ["🍱", "🍛", "🥘", "🌶️", "🍪"],
+            baking: ["🧁", "🍰", "🍪", "🥐", "🍩"],
+            tailoring: ["👗", "👚", "✨", "🎀", "👔"],
+            beauty: ["💅", "💄", "💆", "💇", "👰"]
+        };
+
+        let currentLanguage = localStorage.getItem('selectedLanguage') || 'english';
+
+        // Initialize on page load
+        window.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('languageSelector').value = currentLanguage;
+            loadSkills();
+        });
+
+        function changeLanguage() {
+            currentLanguage = document.getElementById('languageSelector').value;
+            localStorage.setItem('selectedLanguage', currentLanguage);
+            loadSkills();
+        }
+
+        function loadSkills() {
+            const trans = translations[currentLanguage];
+            
+            // Update page title and section title
+            document.getElementById('pageTitle').textContent = trans.pageTitle;
+            document.getElementById('sectionTitle').textContent = trans.sectionTitle;
+            
+            // Generate skills HTML
+            const skillsGrid = document.getElementById('skillsGrid');
+            skillsGrid.innerHTML = '';
+            
+            Object.keys(trans.categories).forEach(key => {
+                const category = trans.categories[key];
+                const icon = categoryIcons[key];
+                
+                const categoryDiv = document.createElement('div');
+                categoryDiv.className = 'skill-category';
+                categoryDiv.onclick = function() { this.classList.toggle('expanded'); };
+                
+                let subcategoriesHTML = '';
+                category.subcategories.forEach((subName, index) => {
+                    const subIcon = subcategoryIcons[key][index];
+                    subcategoriesHTML += `
+                        <div class="subcategory-item">
+                            <div class="subcategory-icon">${subIcon}</div>
+                            <div class="subcategory-name">${subName}</div>
+                        </div>
+                    `;
+                });
+                
+                categoryDiv.innerHTML = `
+                    <div class="category-header">
+                        <span class="category-icon">${icon}</span>
+                        <div class="category-info">
+                            <div class="category-title">${category.title}</div>
+                            <div class="category-description">${category.description}</div>
+                        </div>
+                        <span class="category-expand">▼</span>
+                    </div>
+                    <div class="subcategories">
+                        ${subcategoriesHTML}
+                    </div>
+                `;
+                
+                skillsGrid.appendChild(categoryDiv);
+            });
+        }
+    </script>
+</body>
+</html>

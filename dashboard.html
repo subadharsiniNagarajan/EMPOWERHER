@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EmpowerHer - Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="dashboard-page">
+    <div class="header">
+        <h1 id="welcomeMsg">Welcome!</h1>
+        <div class="header-actions">
+            <select id="languageSelector" class="language-dropdown">
+                <option value="english">English</option>
+                <option value="tamil">தமிழ்</option>
+                <option value="hindi">हिंदी</option>
+                <option value="telugu">తెలుగు</option>
+                <option value="kannada">ಕನ್ನಡ</option>
+                <option value="malayalam">മലയാളം</option>
+            </select>
+            <button class="logout-btn" id="logoutBtn" data-translate="changeLanguage">Change Language</button>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="dashboard-grid">
+            <button class="feature-card" data-feature="ai">
+                <span class="icon">🎤</span>
+                <span class="label" data-translate="askAI">Ask AI</span>
+            </button>
+            
+            <button class="feature-card" data-feature="guide">
+                <span class="icon">💡</span>
+                <span class="label" data-translate="businessGuide">Business Guide</span>
+            </button>
+            
+            <button class="feature-card" data-feature="calculator">
+                <span class="icon">💰</span>
+                <span class="label" data-translate="profitCalculator">Profit Calculator</span>
+            </button>
+            
+            <button class="feature-card" data-feature="marketing">
+                <span class="icon">📢</span>
+                <span class="label" data-translate="marketingHelp">Marketing Help</span>
+            </button>
+            
+            <button class="feature-card" data-feature="motivation">
+                <span class="icon">💪</span>
+                <span class="label" data-translate="motivation">Motivation</span>
+            </button>
+            
+            <button class="feature-card" data-feature="skills">
+                <span class="icon">🎯</span>
+                <span class="label" data-translate="exploreSkills">Explore Skills</span>
+            </button>
+        </div>
+        
+        <div id="contentArea" class="content-area"></div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

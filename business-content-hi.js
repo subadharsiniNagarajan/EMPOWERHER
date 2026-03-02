@@ -1,0 +1,86 @@
+// Hindi Business Content
+const BUSINESS_CONTENT_HI = {
+    businessGuide: {
+        title: "व्यवसाय गाइड",
+        subtitle: "अपनी व्यक्तिगत व्यवसाय योजना बनाएं",
+        form: {
+            skillLabel: "आपके पास कौन सा कौशल है?",
+            skillPlaceholder: "अपना कौशल चुनें",
+            budgetLabel: "आप कितना निवेश कर सकते हैं?",
+            budgetPlaceholder: "₹ में राशि दर्ज करें",
+            timeLabel: "आप प्रतिदिन कितने घंटे काम कर सकते हैं?",
+            timePlaceholder: "घंटे दर्ज करें",
+            locationLabel: "आप कहाँ से काम करेंगे?",
+            locations: {
+                home: "घर से",
+                customer: "ग्राहक के स्थान पर",
+                online: "ऑनलाइन",
+                both: "घर और ग्राहक के स्थान दोनों"
+            },
+            generateButton: "मेरी व्यवसाय योजना बनाएं"
+        },
+        categories: {
+            food: "खाद्य और पेय पदार्थ",
+            fashion: "फैशन और वस्त्र",
+            beauty: "सौंदर्य और कल्याण",
+            crafts: "शिल्प और कला",
+            education: "शिक्षा",
+            digital: "डिजिटल सेवाएं",
+            decoration: "सजावट"
+        },
+        skills: {
+            cooking: "खाना पकाना और टिफिन सेवा",
+            catering: "कैटरिंग",
+            baking: "बेकिंग और केक",
+            pickles: "अचार और संरक्षित खाद्य पदार्थ",
+            snacks: "नाश्ता बनाना",
+            tailoring: "सिलाई",
+            boutique: "बुटीक",
+            embroidery: "कढ़ाई",
+            aari: "आरी का काम",
+            beauty: "सौंदर्य सेवाएं",
+            mehendi: "मेहंदी कलाकार",
+            makeup: "मेकअप कलाकार",
+            yoga: "योग कक्षाएं",
+            fitness: "फिटनेस प्रशिक्षण",
+            handicrafts: "हस्तशिल्प",
+            jewelry: "आभूषण निर्माण",
+            candles: "मोमबत्ती बनाना",
+            soap: "साबुन बनाना",
+            pottery: "मिट्टी के बर्तन",
+            tuition: "स्कूल ट्यूशन",
+            onlineTeaching: "ऑनलाइन शिक्षण",
+            music: "संगीत कक्षाएं",
+            dance: "नृत्य कक्षाएं",
+            art: "कला कक्षाएं",
+            contentWriting: "सामग्री लेखन",
+            dataEntry: "डेटा एंट्री",
+            socialMedia: "सोशल मीडिया प्रबंधन",
+            graphicDesign: "ग्राफिक डिजाइन",
+            flowerDecoration: "फूलों की सजावट",
+            eventDecoration: "कार्यक्रम सजावट",
+            balloonDecoration: "गुब्बारे की सजावट"
+        },
+        plan: {
+            title: "आपकी {businessName} व्यवसाय योजना",
+            stepByStep: "चरण-दर-चरण मार्गदर्शिका:",
+            investment: "निवेश विवरण:",
+            yourBudget: "आपका बजट:",
+            recommended: "अनुशंसित न्यूनतम:",
+            tipLow: "सुझाव: आप छोटे से शुरू कर सकते हैं और कमाई के साथ धीरे-धीरे अधिक निवेश कर सकते हैं!",
+            tipGood: "बढ़िया! शुरू करने के लिए आपके पास पर्याप्त बजट है।",
+            pricing: "मूल्य निर्धारण रणनीति:",
+            suggestedPrice: "प्रति सेवा/उत्पाद सुझाई गई कीमत:",
+            working: "प्रतिदिन {hours} घंटे काम",
+            operatingLocation: "संचालन स्थान:",
+            projections: "मासिक अनुमान:",
+            expectedUnits: "प्रति माह अपेक्षित सेवाएं/उत्पाद:",
+            revenue: "अनुमानित मासिक राजस्व:",
+            expenses: "अनुमानित मासिक खर्च:",
+            profit: "अनुमानित मासिक लाभ:",
+            marketing: "मार्केटिंग योजना:",
+            successTips: "सफलता के सुझाव:",
+            remember: "{name} याद रखें: हर सफल व्यवसाय छोटे से शुरू हुआ। आपका समर्पण और कड़ी मेहनत इसे सफल बनाएगी!"
+        }
+    }
+};

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data-Translate Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #ffeef8 0%, #e0c3fc 100%);
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #d946ef;
+        }
+        .language-selector {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: 2px solid #d946ef;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            cursor: pointer;
+        }
+        .subcategory {
+            display: inline-block;
+            margin: 10px;
+            padding: 15px 20px;
+            background: #f3e8ff;
+            border-radius: 10px;
+            border-left: 4px solid #d946ef;
+        }
+        .info-box {
+            background: #e0f2fe;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 4px solid #0284c7;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>✅ Data-Translate Attribute Example</h1>
+        
+        <div class="info-box">
+            <strong>How it works:</strong> Elements with <code>data-translate="key"</code> automatically 
+            translate when you change the language. The <code>translatePage()</code> function in 
+            <code>script.js</code> handles this automatically.
+        </div>
+        
+        <label for="languageSelector">Select Language:</label>
+        <select id="languageSelector" class="language-selector" onchange="changeLanguage()">
+            <option value="english">English</option>
+            <option value="tamil">தமிழ் (Tamil)</option>
+            <option value="hindi">हिंदी (Hindi)</option>
+        </select>
+
+        <h2>Cooking & Catering Subcategories:</h2>
+        
+        <div class="subcategory">
+            🍱 <span data-translate="tiffinService">Tiffin Service</span>
+        </div>
+        
+        <div class="subcategory">
+            🍛 <span data-translate="catering">Catering</span>
+        </div>
+        
+        <div class="subcategory">
+            🥘 <span data-translate="homemadePickles">Homemade Pickles</span>
+        </div>
+        
+        <div class="subcategory">
+            🌶️ <span data-translate="masalaBusiness">Masala Business</span>
+        </div>
+        
+        <div class="subcategory">
+            🍪 <span data-translate="snacksMaking">Snacks Making</span>
+        </div>
+
+        <div class="info-box" style="margin-top: 30px;">
+            <strong>✅ Success!</strong> These translations now work because:
+            <ol>
+                <li>Each element has a <code>data-translate</code> attribute</li>
+                <li>The translation keys are added to the <code>translations</code> object in <code>script.js</code></li>
+                <li>The <code>translatePage()</code> function automatically updates all elements</li>
+            </ol>
+        </div>
+
+        <h3>HTML Code Used:</h3>
+        <pre style="background: #f5f5f5; padding: 15px; border-radius: 5px; overflow-x: auto;">
+&lt;div data-translate="tiffinService"&gt;Tiffin Service&lt;/div&gt;
+&lt;div data-translate="catering"&gt;Catering&lt;/div&gt;
+&lt;div data-translate="homemadePickles"&gt;Homemade Pickles&lt;/div&gt;
+&lt;div data-translate="masalaBusiness"&gt;Masala Business&lt;/div&gt;
+&lt;div data-translate="snacksMaking"&gt;Snacks Making&lt;/div&gt;</pre>
+
+        <h3>JavaScript Translation Object:</h3>
+        <pre style="background: #f5f5f5; padding: 15px; border-radius: 5px; overflow-x: auto;">
+const translations = {
+    english: {
+        tiffinService: "Tiffin Service",
+        catering: "Catering",
+        homemadePickles: "Homemade Pickles",
+        masalaBusiness: "Masala Business",
+        snacksMaking: "Snacks Making"
+    },
+    tamil: {
+        tiffinService: "டிஃபின் சேவை",
+        catering: "கேட்டரிங்",
+        homemadePickles: "வீட்டில் தயாரிக்கப்பட்ட ஊறுகாய்",
+        masalaBusiness: "மசாலா வியாபாரம்",
+        snacksMaking: "சிற்றுண்டி தயாரிப்பு"
+    },
+    hindi: {
+        tiffinService: "टिफिन सेवा",
+        catering: "कैटरिंग",
+        homemadePickles: "घर का बना अचार",
+        masalaBusiness: "मसाला व्यवसाय",
+        snacksMaking: "नाश्ता बनाना"
+    }
+};</pre>
+    </div>
+
+    <script>
+        // Simplified translations for this example
+        const translations = {
+            english: {
+                tiffinService: "Tiffin Service",
+                catering: "Catering",
+                homemadePickles: "Homemade Pickles",
+                masalaBusiness: "Masala Business",
+                snacksMaking: "Snacks Making"
+            },
+            tamil: {
+                tiffinService: "டிஃபின் சேவை",
+                catering: "கேட்டரிங்",
+                homemadePickles: "வீட்டில் தயாரிக்கப்பட்ட ஊறுகாய்",
+                masalaBusiness: "மசாலா வியாபாரம்",
+                snacksMaking: "சிற்றுண்டி தயாரிப்பு"
+            },
+            hindi: {
+                tiffinService: "टिफिन सेवा",
+                catering: "कैटरिंग",
+                homemadePickles: "घर का बना अचार",
+                masalaBusiness: "मसाला व्यवसाय",
+                snacksMaking: "नाश्ता बनाना"
+            }
+        };
+
+        let currentLanguage = localStorage.getItem('selectedLanguage') || 'english';
+
+        // Initialize on page load
+        window.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('languageSelector').value = currentLanguage;
+            translatePage();
+        });
+
+        function changeLanguage() {
+            currentLanguage = document.getElementById('languageSelector').value;
+            localStorage.setItem('selectedLanguage', currentLanguage);
+            translatePage();
+        }
+
+        function translatePage() {
+            const lang = translations[currentLanguage];
+            
+            // Update all elements with data-translate attribute
+            document.querySelectorAll('[data-translate]').forEach(element => {
+                const key = element.getAttribute('data-translate');
+                if (lang[key]) {
+                    element.textContent = lang[key];
+                }
+            });
+        }
+    </script>
+</body>
+</html>

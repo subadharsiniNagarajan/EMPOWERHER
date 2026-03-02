@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EmpowerHer - Business Skills Multilingual</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #ffeef8 0%, #e0c3fc 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Navigation */
+        .nav-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background: white;
+            border-bottom: 2px solid #e0c3fc;
+            margin-bottom: 30px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .nav-link {
+            color: #d946ef;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 16px;
+            border-radius: 8px;
+            transition: background 0.3s;
+        }
+        
+        .nav-link:hover {
+            background: #f3e8ff;
+        }
+        
+        .language-selector {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: 2px solid #d946ef;
+            border-radius: 10px;
+            background: white;
+            color: #d946ef;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        
+        /* Page Title */
+        h1 {
+            color: #d946ef;
+            font-size: 32px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        /* Business Skills Section */
+        .skills-section {
+            margin-top: 40px;
+        }
+        
+        .section-title {
+            color: #d946ef;
+            font-size: 28px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .skills-grid {
+            display: grid;
+            gap: 25px;
+        }
+        
+        .skill-category {
+            background: #f9f9f9;
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 5px solid #d946ef;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .skill-category:hover {
+            background: #f3e8ff;
+            transform: translateX(5px);
+        }
+        
+        .category-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 10px;
+        }
+        
+        .category-icon {
+            font-size: 40px;
+        }
+        
+        .category-info {
+            flex: 1;
+        }
+        
+        .category-title {
+            font-size: 22px;
+            font-weight: bold;
+            color: #d946ef;
+            margin-bottom: 5px;
+        }
+        
+        .category-description {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .category-expand {
+            font-size: 24px;
+            color: #d946ef;
+            transition: transform 0.3s;
+        }
+        
+        .skill-category.expanded .category-expand {
+            transform: rotate(180deg);
+        }
+        
+        /* Subcategories */
+        .subcategories {
+            display: none;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 2px solid #e0c3fc;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        
+        .skill-category.expanded .subcategories {
+            display: grid;
+        }
+        
+        .subcategory-item {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+        }
+        
+        .subcategory-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(217, 70, 239, 0.2);
+        }
+        
+        .subcategory-icon {
+            font-size: 30px;
+            margin-bottom: 8px;
+        }
+        
+        .subcategory-name {
+            font-weight: bold;
+            color: #555;
+            font-size: 14px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-bar {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .nav-links {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .nav-link {
+                text-align: center;
+            }
+            
+            .subcategories {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Navigation Bar -->
+        <nav class="nav-bar">
+            <div class="nav-links">
+                <a href="#" class="nav-link" id="navHome">Home</a>
+                <a href="#" class="nav-link" id="navFeatures">Features</a>
+                <a href="#" class="nav-link" id="navAbout">About</a>
+                <a href="#" class="nav-link" id="navContact">Contact</a>
+            </div>
+            <select id="languageSelector" class="language-selector" onchange="changeLanguage()">
+                <option value="english">English</option>
+                <option value="tamil">தமிழ் (Tamil)</option>
+                <option value="hindi">हिंदी (Hindi)</option>
+            </select>
+        </nav>
+
+        <!-- Page Title -->
+        <h1 id="pageTitle">EmpowerHer - Business Platform</h1>
+
+        <!-- Explore Business Skills Section -->
+        <div class="skills-section">
+            <h2 class="section-title">
+                <span>🎯</span>
+                <span id="exploreSkillsTitle">Explore Business Skills</span>
+            </h2>
+
+            <div class="skills-grid">
+                <!-- Cooking & Catering Category -->
+                <div class="skill-category" onclick="toggleCategory(this)">
+                    <div class="category-header">
+                        <span class="category-icon">🍳</span>
+                        <div class="category-info">
+                            <div class="category-title" id="cookingTitle">Cooking & Catering</div>
+                            <div class="category-description" id="cookingDesc">Home-cooked meals and catering services</div>
+                        </div>
+                        <span class="category-expand">▼</span>
+                    </div>
+                    <div class="subcategories">
+                        <div class="subcategory-item">
+                            <div class="subcategory-icon">🍱</div>
+                            <div class="subcategory-name" id="tiffinService">Tiffin Service</div>
+                        </div>
+                        <div class="subcategory-item">
+                            <div class="subcategory-icon">🍛</div>
+                            <div class="subcategory-name" id="catering">Catering</div>
+                        </div>
+                        <div class="subcategory-item">
+                            <div class="subcategory-icon">🥘</div>
+                            <div class="subcategory-name" id="homemadePickles">Homemade Pickles</div>
+                        </div>
+                        <div class="subcategory-item">
+                            <div class="subcategory-icon">🌶️</div>
+                            <div class="subcategory-name" id="masalaBusiness">Masala Business</div>
+                        </div>
+                        <div class="subcategory-item">
+                            <div class="subcategory-icon">🍪</div>
+                            <div class="subcategory-name" id="snacksMaking">Snacks Making</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Baking & Desserts Category -->
+                <div class="skill-category" onclick="toggleCategory(this)">
+                    <div class="category-header">
+                        <span class="category-icon">🎂</span>
+                        <div class="category-info">
+                            <div class="category-title" id="bakingTitle">Baking & Desserts</div>
+                            <div class="category-description" id="bakingDesc">Custom cakes and baked goods</div>
+                        </div>
+                        <span class="category-expand">▼</span>
+                    </div>
+                    <div class="subcategories">
+                        <div class="subcategory-item">
+                            <div class="subcategory-icon">🧁</div>
+                            <div class="subcategory-name" id="cupcakes">Cupcakes</div>
+                        </div>
+                        <div class="subcategory-item">
+                            <div class="subcategory-icon">🍰</div>
+                            <div class="subcategory-name" id="customCakes">Custom Cakes</div>
+                        </div>
+                        <div class="subcategory-item">
+                            <div class="subcategory-icon">🍪</div>
+                            <div class="subcategory-name" id="cookies">Cookies</div>
+                        </div>
+                        <div class="subcategory-item">
+                            <div class="subcategory-icon">🥐</div>
+                            <div class="subcategory-name" id="pastries">Pastries</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tailoring & Boutique Category -->
+                <div class="skill-category" onclick="toggleCategory(this)">
+                    <div class="category-header">
+                        <span class="category-icon">✂️</span>
+                        <div class="category-info">
+                            <div class="category-title" id="tailoringTitle">Tailoring & Boutique</div>
+                            <div class="category-description" id="tailoringDesc">Stitching and alteration services</div>
+                        </div>
+                        <span class="category-expand">▼</span>
+                    </div>
+                    <div class="subcategories">
+                        <div class="subcategory-item">
+                            <div class="subcategory-icon">👗</div>
+                            <div class="subcategory-name" id="dressStitching">Dress Stitching</div>
+                        </div>
+                        <div class="subcategory-item">
+                            <div class="subcategory-icon">👚</div>
+                            <div class="subcategory-name" id="blouseMaking">Blouse Making</div>
+                        </div>
+                        <div class="subcategory-item">
+                            <div class="subcategory-icon">✨</div>
+                            <div class="subcategory-name" id="alterations">Alterations</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Beauty Services Category -->
+                <div class="skill-category" onclick="toggleCategory(this)">
+                    <div class="category-header">
+                        <span class="category-icon">💄</span>
+                        <div class="category-info">
+                            <div class="category-title" id="beautyTitle">Beauty & Makeup</div>
+                            <div class="category-description" id="beautyDesc">Makeup and beauty services</div>
+                        </div>
+                        <span class="category-expand">▼</span>
+                    </div>
+                    <div class="subcategories">
+                        <div class="subcategory-item">
+                            <div class="subcategory-icon">💅</div>
+                            <div class="subcategory-name" id="mehendiArtist">Mehendi Artist</div>
+                        </div>
+                        <div class="subcategory-item">
+                            <div class="subcategory-icon">💄</div>
+                            <div class="subcategory-name" id="makeupArtist">Makeup Artist</div>
+                        </div>
+                        <div class="subcategory-item">
+                            <div class="subcategory-icon">💆</div>
+                            <div class="subcategory-name" id="facialServices">Facial Services</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Complete Translation Object
+        const translations = {
+            english: {
+                // Navigation
+                navHome: "Home",
+                navFeatures: "Features",
+                navAbout: "About",
+                navContact: "Contact",
+                
+                // Page Title
+                pageTitle: "EmpowerHer - Business Platform",
+                
+                // Explore Skills Section
+                exploreSkillsTitle: "Explore Business Skills",
+                
+                // Cooking & Catering
+                cookingTitle: "Cooking & Catering",
+                cookingDesc: "Home-cooked meals and catering services",
+                tiffinService: "Tiffin Service",
+                catering: "Catering",
+                homemadePickles: "Homemade Pickles",
+                masalaBusiness: "Masala Business",
+                snacksMaking: "Snacks Making",
+                
+                // Baking & Desserts
+                bakingTitle: "Baking & Desserts",
+                bakingDesc: "Custom cakes and baked goods",
+                cupcakes: "Cupcakes",
+                customCakes: "Custom Cakes",
+                cookies: "Cookies",
+                pastries: "Pastries",
+                
+                // Tailoring & Boutique
+                tailoringTitle: "Tailoring & Boutique",
+                tailoringDesc: "Stitching and alteration services",
+                dressStitching: "Dress Stitching",
+                blouseMaking: "Blouse Making",
+                alterations: "Alterations",
+                
+                // Beauty & Makeup
+                beautyTitle: "Beauty & Makeup",
+                beautyDesc: "Makeup and beauty services",
+                mehendiArtist: "Mehendi Artist",
+                makeupArtist: "Makeup Artist",
+                facialServices: "Facial Services"
+            },
+            tamil: {
+                // Navigation
+                navHome: "முகப்பு",
+                navFeatures: "அம்சங்கள்",
+                navAbout: "எங்களை பற்றி",
+                navContact: "தொடர்பு",
+                
+                // Page Title
+                pageTitle: "எம்பவர்ஹெர் - வியாபார தளம்",
+                
+                // Explore Skills Section
+                exploreSkillsTitle: "வியாபார திறன்களை ஆராயுங்கள்",
+                
+                // Cooking & Catering
+                cookingTitle: "சமையல் மற்றும் கேட்டரிங்",
+                cookingDesc: "வீட்டில் சமைத்த உணவு மற்றும் கேட்டரிங் சேவைகள்",
+                tiffinService: "டிஃபின் சேவை",
+                catering: "கேட்டரிங்",
+                homemadePickles: "வீட்டில் தயாரிக்கப்பட்ட ஊறுகாய்",
+                masalaBusiness: "மசாலா வியாபாரம்",
+                snacksMaking: "சிற்றுண்டி தயாரிப்பு",
+                
+                // Baking & Desserts
+                bakingTitle: "பேக்கிங் மற்றும் இனிப்புகள்",
+                bakingDesc: "தனிப்பயன் கேக்குகள் மற்றும் சுடப்பட்ட பொருட்கள்",
+                cupcakes: "கப்கேக்குகள்",
+                customCakes: "தனிப்பயன் கேக்குகள்",
+                cookies: "குக்கீகள்",
+                pastries: "பேஸ்ட்ரிகள்",
+                
+                // Tailoring & Boutique
+                tailoringTitle: "தையல் மற்றும் பூட்டிக்",
+                tailoringDesc: "தையல் மற்றும் மாற்றம் சேவைகள்",
+                dressStitching: "ஆடை தையல்",
+                blouseMaking: "ரவிக்கை தயாரிப்பு",
+                alterations: "மாற்றங்கள்",
+                
+                // Beauty & Makeup
+                beautyTitle: "அழகு மற்றும் மேக்கப்",
+                beautyDesc: "மேக்கப் மற்றும் அழகு சேவைகள்",
+                mehendiArtist: "மெஹந்தி கலைஞர்",
+                makeupArtist: "மேக்கப் கலைஞர்",
+                facialServices: "முக சிகிச்சை சேவைகள்"
+            },
+            hindi: {
+                // Navigation
+                navHome: "मुख्य पृष्ठ",
+                navFeatures: "विशेषताएं",
+                navAbout: "हमारे बारे में",
+                navContact: "संपर्क करें",
+                
+                // Page Title
+                pageTitle: "एम्पावरहर - व्यवसाय मंच",
+                
+                // Explore Skills Section
+                exploreSkillsTitle: "व्यवसाय कौशल खोजें",
+                
+                // Cooking & Catering
+                cookingTitle: "खाना पकाना और कैटरिंग",
+                cookingDesc: "घर का बना खाना और कैटरिंग सेवाएं",
+                tiffinService: "टिफिन सेवा",
+                catering: "कैटरिंग",
+                homemadePickles: "घर का बना अचार",
+                masalaBusiness: "मसाला व्यवसाय",
+                snacksMaking: "नाश्ता बनाना",
+                
+                // Baking & Desserts
+                bakingTitle: "बेकिंग और मिठाई",
+                bakingDesc: "कस्टम केक और बेक किए गए सामान",
+                cupcakes: "कपकेक",
+                customCakes: "कस्टम केक",
+                cookies: "कुकीज़",
+                pastries: "पेस्ट्री",
+                
+                // Tailoring & Boutique
+                tailoringTitle: "सिलाई और बुटीक",
+                tailoringDesc: "सिलाई और परिवर्तन सेवाएं",
+                dressStitching: "कपड़े की सिलाई",
+                blouseMaking: "ब्लाउज बनाना",
+                alterations: "परिवर्तन",
+                
+                // Beauty & Makeup
+                beautyTitle: "सौंदर्य और मेकअप",
+                beautyDesc: "मेकअप और सौंदर्य सेवाएं",
+                mehendiArtist: "मेहंदी कलाकार",
+                makeupArtist: "मेकअप कलाकार",
+                facialServices: "फेशियल सेवाएं"
+            }
+        };
+
+        // Function to change language
+        function changeLanguage() {
+            // Get selected language
+            const selectedLanguage = document.getElementById('languageSelector').value;
+            
+            // Save to localStorage
+            localStorage.setItem('selectedLanguage', selectedLanguage);
+            
+            // Get translations for selected language
+            const trans = translations[selectedLanguage];
+            
+            // Update Navigation
+            document.getElementById('navHome').textContent = trans.navHome;
+            document.getElementById('navFeatures').textContent = trans.navFeatures;
+            document.getElementById('navAbout').textContent = trans.navAbout;
+            document.getElementById('navContact').textContent = trans.navContact;
+            
+            // Update Page Title
+            document.getElementById('pageTitle').textContent = trans.pageTitle;
+            
+            // Update Explore Skills Section
+            document.getElementById('exploreSkillsTitle').textContent = trans.exploreSkillsTitle;
+            
+            // Update Cooking & Catering
+            document.getElementById('cookingTitle').textContent = trans.cookingTitle;
+            document.getElementById('cookingDesc').textContent = trans.cookingDesc;
+            document.getElementById('tiffinService').textContent = trans.tiffinService;
+            document.getElementById('catering').textContent = trans.catering;
+            document.getElementById('homemadePickles').textContent = trans.homemadePickles;
+            document.getElementById('masalaBusiness').textContent = trans.masalaBusiness;
+            document.getElementById('snacksMaking').textContent = trans.snacksMaking;
+            
+            // Update Baking & Desserts
+            document.getElementById('bakingTitle').textContent = trans.bakingTitle;
+            document.getElementById('bakingDesc').textContent = trans.bakingDesc;
+            document.getElementById('cupcakes').textContent = trans.cupcakes;
+            document.getElementById('customCakes').textContent = trans.customCakes;
+            document.getElementById('cookies').textContent = trans.cookies;
+            document.getElementById('pastries').textContent = trans.pastries;
+            
+            // Update Tailoring & Boutique
+            document.getElementById('tailoringTitle').textContent = trans.tailoringTitle;
+            document.getElementById('tailoringDesc').textContent = trans.tailoringDesc;
+            document.getElementById('dressStitching').textContent = trans.dressStitching;
+            document.getElementById('blouseMaking').textContent = trans.blouseMaking;
+            document.getElementById('alterations').textContent = trans.alterations;
+            
+            // Update Beauty & Makeup
+            document.getElementById('beautyTitle').textContent = trans.beautyTitle;
+            document.getElementById('beautyDesc').textContent = trans.beautyDesc;
+            document.getElementById('mehendiArtist').textContent = trans.mehendiArtist;
+            document.getElementById('makeupArtist').textContent = trans.makeupArtist;
+            document.getElementById('facialServices').textContent = trans.facialServices;
+        }
+
+        // Function to toggle category expansion
+        function toggleCategory(element) {
+            element.classList.toggle('expanded');
+        }
+
+        // Load saved language on page load
+        window.addEventListener('DOMContentLoaded', function() {
+            // Get saved language or default to English
+            const savedLanguage = localStorage.getItem('selectedLanguage') || 'english';
+            
+            // Set dropdown value
+            document.getElementById('languageSelector').value = savedLanguage;
+            
+            // Apply translations
+            changeLanguage();
+        });
+    </script>
+</body>
+</html>

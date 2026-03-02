@@ -1,0 +1,86 @@
+// English Business Content
+const BUSINESS_CONTENT_EN = {
+    businessGuide: {
+        title: "Business Guide",
+        subtitle: "Create Your Personalized Business Plan",
+        form: {
+            skillLabel: "What skill do you have?",
+            skillPlaceholder: "Select your skill",
+            budgetLabel: "How much can you invest?",
+            budgetPlaceholder: "Enter amount in ₹",
+            timeLabel: "How many hours can you work daily?",
+            timePlaceholder: "Enter hours",
+            locationLabel: "Where will you operate?",
+            locations: {
+                home: "From Home",
+                customer: "At Customer's Place",
+                online: "Online",
+                both: "Both Home & Customer Place"
+            },
+            generateButton: "Generate My Business Plan"
+        },
+        categories: {
+            food: "Food & Beverages",
+            fashion: "Fashion & Textiles",
+            beauty: "Beauty & Wellness",
+            crafts: "Crafts & Art",
+            education: "Education",
+            digital: "Digital Services",
+            decoration: "Decoration"
+        },
+        skills: {
+            cooking: "Cooking & Tiffin Service",
+            catering: "Catering",
+            baking: "Baking & Cakes",
+            pickles: "Pickles & Preserves",
+            snacks: "Snacks Making",
+            tailoring: "Tailoring",
+            boutique: "Boutique",
+            embroidery: "Embroidery",
+            aari: "Aari Work",
+            beauty: "Beauty Services",
+            mehendi: "Mehendi Artist",
+            makeup: "Makeup Artist",
+            yoga: "Yoga Classes",
+            fitness: "Fitness Training",
+            handicrafts: "Handicrafts",
+            jewelry: "Jewelry Making",
+            candles: "Candle Making",
+            soap: "Soap Making",
+            pottery: "Pottery",
+            tuition: "School Tuition",
+            onlineTeaching: "Online Teaching",
+            music: "Music Classes",
+            dance: "Dance Classes",
+            art: "Art Classes",
+            contentWriting: "Content Writing",
+            dataEntry: "Data Entry",
+            socialMedia: "Social Media Management",
+            graphicDesign: "Graphic Design",
+            flowerDecoration: "Flower Decoration",
+            eventDecoration: "Event Decoration",
+            balloonDecoration: "Balloon Decoration"
+        },
+        plan: {
+            title: "Your {businessName} Business Plan",
+            stepByStep: "Step-by-Step Guide:",
+            investment: "Investment Breakdown:",
+            yourBudget: "Your Budget:",
+            recommended: "Recommended Minimum:",
+            tipLow: "Tip: You can start small and gradually invest more as you earn!",
+            tipGood: "Great! You have sufficient budget to start.",
+            pricing: "Pricing Strategy:",
+            suggestedPrice: "Suggested Price per Service/Product:",
+            working: "Working {hours} hours daily",
+            operatingLocation: "Operating Location:",
+            projections: "Monthly Projections:",
+            expectedUnits: "Expected Services/Products per Month:",
+            revenue: "Estimated Monthly Revenue:",
+            expenses: "Estimated Monthly Expenses:",
+            profit: "Estimated Monthly Profit:",
+            marketing: "Marketing Plan:",
+            successTips: "Success Tips:",
+            remember: "Remember {name}: Every successful business started small. Your dedication and hard work will make this successful!"
+        }
+    }
+};
